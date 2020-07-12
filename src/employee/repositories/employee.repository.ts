@@ -11,8 +11,12 @@ export class EmployeeRepository {
         return this.employeeModel.find();
     }
 
-    createEmployee(employee: Employee): Promise<Employee> {
+    createOne(employee: Employee): Promise<Employee> {
         const newEmployee = new this.employeeModel(employee)
         return newEmployee.save()
+    }
+
+    async deleteOne(employeeId: string): Promise<Employee> {
+        return this.employeeModel.findByIdAndDelete(employeeId);
     }
 }

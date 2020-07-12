@@ -1,4 +1,4 @@
-import {Body, Controller, Get, Post} from '@nestjs/common';
+import {Body, Controller, Delete, Get, Param, Post} from '@nestjs/common';
 import { EmployeeRepository } from '../repositories/employee.repository';
 import { Employee } from '../schemas/employee.schema';
 
@@ -15,6 +15,11 @@ export class EmployeeController {
 
   @Post()
   createEmployee(@Body() employee: Employee): Promise<Employee> {
-    return this.employeesRepository.createEmployee(employee);
+    return this.employeesRepository.createOne(employee);
+  }
+
+  @Delete(':employeeId')
+  deleteEmployee(@Param('employeeId') employeeId: string): Promise<Employee> {
+    return this.employeesRepository.deleteOne(employeeId);
   }
 }
