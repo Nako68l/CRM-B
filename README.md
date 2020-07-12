@@ -1,3 +1,17 @@
+### To start the application
+create `db-config.ts` file under `CRM-B/src`
+inside you need to have smth like 
+```
+const DB_NAME = <DB_NAME>;
+export const MONGO_CONNECTION = `mongodb+srv://<MONGO_ADMIN_USERNAME>:<MONGO_ADMIN_PASSWORD>/${DB_NAME}?retryWrites=true&w=majority`;
+```
+`DB_NAME` can be whatever you'd like
+
+`MONGO_ADMIN_USERNAME` and `MONGO_ADMIN_PASSWORD` should be credentials to your db admin user
+
+
+_________
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
 </p>
