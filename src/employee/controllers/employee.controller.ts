@@ -1,9 +1,11 @@
-import {Body, Controller, Delete, Get, Param, Post, Put} from '@nestjs/common';
+import {Body, Controller, Delete, Get, Param, Post, Put, UseGuards} from '@nestjs/common';
 import { EmployeeRepository } from '../repositories/employee.repository';
 import { Employee } from '../schemas/employee.schema';
+import {AuthGuard} from "@nestjs/passport";
 
 const prefix = Employee.name.toLowerCase() + 's'
 @Controller(prefix)
+@UseGuards(AuthGuard('jwt'))
 export class EmployeeController {
 
   constructor(private employeesRepository: EmployeeRepository){}
