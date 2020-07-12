@@ -9,7 +9,7 @@ export class EmployeeController {
   constructor(private employeesRepository: EmployeeRepository){}
 
   @Get()
-  indAllEmployees(): Promise<Employee[]> {
+  findAllEmployees(): Promise<Employee[]> {
     return this.employeesRepository.findAll();
   }
 
