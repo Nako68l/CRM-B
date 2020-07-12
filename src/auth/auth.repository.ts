@@ -1,4 +1,4 @@
-import {HttpException, HttpStatus, Injectable} from '@nestjs/common';
+import {ConflictException, HttpException, HttpStatus, Injectable} from '@nestjs/common';
 import {Model} from 'mongoose';
 import {InjectModel} from '@nestjs/mongoose';
 import {Auth} from "./auth.schema";
@@ -8,7 +8,11 @@ export class AuthRepository {
 
     constructor(@InjectModel(Auth.name) private authModel: Model<Auth>) {}
 
-    register(creds: Auth): Promise<Auth> {
+    async register(creds: Auth): Promise<Auth> {
+        const existingUser = await this.authModel.findOne({login: creds.login})
+        if (existingUser) {
+            throw new ConflictException('User already exists');
+        }
         const newAuth = new this.authModel(creds)
         return newAuth.save()
     }
