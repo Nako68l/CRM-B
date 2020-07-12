@@ -1,5 +1,6 @@
 ### To start the application
 create `db-config.ts` file under `CRM-B/src`
+
 inside you need to export `MONGO_CONNECTION` variable
 ```
 const DB_NAME = <DB_NAME>;
