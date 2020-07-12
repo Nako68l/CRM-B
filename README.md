@@ -1,6 +1,6 @@
 ### To start the application
 create `db-config.ts` file under `CRM-B/src`
-inside you need to have smth like 
+inside you need to export `MONGO_CONNECTION` variable
 ```
 const DB_NAME = <DB_NAME>;
 export const MONGO_CONNECTION = `mongodb+srv://<MONGO_ADMIN_USERNAME>:<MONGO_ADMIN_PASSWORD>/${DB_NAME}?retryWrites=true&w=majority`;
